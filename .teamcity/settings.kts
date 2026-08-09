@@ -47,6 +47,10 @@ object Build : BuildType({
         }
         maven {
             id = "Maven2_1"
+
+            conditions {
+                equals("teamcity.build.branch.is_default", "true")
+            }
             goals = "clean deploy"
             userSettingsSelection = "userSettingsSelection:byPath"
             userSettingsPath = "settings.xml"
